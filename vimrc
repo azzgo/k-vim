@@ -193,9 +193,9 @@ set autoindent    " 打开自动缩进
 " never add copyindent, case error   " copy the previous indentation on autoindenting
 
 " tab相关变更
-set tabstop=4     " 设置Tab键的宽度        [等同的空格个数]
-set shiftwidth=4  " 每一次缩进对应的空格数
-set softtabstop=4 " 按退格键时可以一次删掉 4 个空格
+set tabstop=2     " 设置Tab键的宽度        [等同的空格个数]
+set shiftwidth=2  " 每一次缩进对应的空格数
+set softtabstop=2 " 按退格键时可以一次删掉 4 个空格
 set smarttab      " insert tabs on the start of a line according to shiftwidth, not tabstop 按退格键时可以一次删掉 4 个空格
 set expandtab     " 将Tab自动转化成空格    [需要输入真正的Tab键时，使用 Ctrl+V + Tab]
 set shiftround    " 缩进时，取整 use multiple of shiftwidth when indenting with '<' and '>'
@@ -282,6 +282,8 @@ endif
 "==========================================
 " HotKey Settings  自定义快捷键设置
 "==========================================
+" 花括号换行格式化
+" inoremap {<CR> <CR><ESC>O}
 
 " 主要按键重定义
 
@@ -603,9 +605,9 @@ endif
 " theme主题
 set background=dark
 set t_Co=256
-colorscheme solarized
+" colorscheme solarized
 " colorscheme Tomorrow-Night
-" colorscheme Tomorrow-Night-Bright
+colorscheme Tomorrow-Night-Bright
 " colorscheme desert
 
 

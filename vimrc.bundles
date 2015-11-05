@@ -51,8 +51,9 @@ let g:syntastic_python_pep8_args='--ignore=E501,E225,E124,E712'
 " let g:syntastic_python_pylint_args='--disable=C0111,R0903,C0301'
 
 
-let g:syntastic_javascript_checkers = ['jsl', 'jshint']
-let g:syntastic_html_checkers=['tidy', 'jshint']
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_html_checkers=['tidy', 'eslint']
+
 " 修改高亮的背景色, 适应主题
 highlight SyntasticErrorSign guifg=white guibg=black
 
@@ -552,8 +553,9 @@ let g:vim_markdown_folding_disabled=1
 " ###### HTML/JS/JQUERY/CSS #########
 
 " for javascript  注意: syntax这个插件要放前面
-Bundle 'jelera/vim-javascript-syntax'
-Bundle "pangloss/vim-javascript"
+" Bundle 'jelera/vim-javascript-syntax'
+" Bundle 'pangloss/vim-javascript'
+Bundle 'othree/yajs.vim'
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
@@ -561,13 +563,14 @@ let g:html_indent_style1 = "inc"
 
 " for javascript 自动补全,配合YCM,需要安装nodejs&npm  see
 " https://github.com/marijnh/tern_for_vim
-" Bundle 'marijnh/tern_for_vim'
+Bundle 'marijnh/tern_for_vim'
 
 " for jquery
 Bundle 'nono/jquery.vim'
 
 " ###### emmet HTML complete #########
-" Bundle "mattn/emmet-vim"
+Bundle "mattn/emmet-vim"
+let g:user_emmet_leader_key='<C-e>'
 
 " ###### vim.less : less 自动更新##########
 " Bundle 'groenewege/vim-less'
@@ -601,3 +604,15 @@ autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr>
 " I do not want to change much for default registers, just default behavior
 " Bundle 'svermeulen/vim-easyclip'
 "------------------------------------------- end of configs --------------------------------------------
+
+" Custom Configs
+" ####### jsbeauty ########
+Bundle 'maksimr/vim-jsbeautify'
+
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+
+autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsBeautify()<cr>
+autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
+autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
